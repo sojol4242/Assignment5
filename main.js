@@ -18,7 +18,7 @@ function getMealList() {
     if (searchInput == '') {
         alert("Please search by a word")
     } else {
-        fetch(` https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`)
 
         .then(res => res.json())
             .then(data => {

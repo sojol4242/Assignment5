@@ -1,9 +1,10 @@
+// grab element :
 const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
-// event listeners
+// event listeners:
 searchBtn.addEventListener('click', getMealList);
 mealList.addEventListener('click', getMealRecipe);
 recipeCloseBtn.addEventListener('click', () => {
@@ -11,7 +12,7 @@ recipeCloseBtn.addEventListener('click', () => {
 });
 
 
-// get meal list that matches with the ingredients
+// get meal list that matches with the ingredients:
 function getMealList() {
     let searchInput = document.getElementById('search-input').value;
     if (searchInput == '') {
@@ -26,15 +27,13 @@ function getMealList() {
                 console.log(data.meals)
                 if (data.meals) {
                     data.meals.forEach(meal => {
-                        html += `
-                   
+                        html += `                  
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
                             <img src = "${meal.strMealThumb}" alt = "food">
                         </div>
                         <div class = "meal-name">
-                            <h3>${meal.strMeal}</h3>
-                         
+                            <h3>${meal.strMeal}</h3>                         
                         </div>
                     </div>
                 `;
@@ -44,10 +43,8 @@ function getMealList() {
                     html = "Sorry, we can't reach your search!";
                     mealList.classList.add('notFound');
                 }
-
                 mealList.innerHTML = html;
                 document.getElementById("error").innerText = "";
-
             })
             .catch(err => {
                 // alert("We can't reach to your food.Please try again", err);
@@ -55,7 +52,6 @@ function getMealList() {
                 mealList.innerHTML = '';
             })
     }
-
 }
 
 
@@ -70,11 +66,13 @@ function getMealList() {
 //     }
 // }
 
+// meal details :
 const mealDetails = document.getElementById("meal-card");
 mealDetails.addEventListener("click", () => {
     getMealRecipe;
-
 })
+
+
 
 function getMealRecipe(e) {
     let mealItem = e.target.parentElement.parentElement;
@@ -92,7 +90,7 @@ function mealRecipeModal(meal) {
     let html = `
     <div class = "recipe-meal-img">
     <img src = "${meal.strMealThumb}" alt = "meal-image">
-</div>
+   </div>
         <h2 class = "recipe-title">${meal.strMeal}</h2>
         <p class = "recipe-category">${meal.strCategory}</p>
         <div class = "recipe-instruct">
@@ -101,16 +99,16 @@ function mealRecipeModal(meal) {
         </div>
         <div class = "recipe-ingredient">
         <h3 id="ingredientHead">Ingredient:</h3>     
-        <ul><li>${meal.strIngredient1}  -  ${meal.strMeasure1} </li>
-        <li>${meal.strIngredient2}  -  ${meal.strMeasure2}</li>
-        <li>${meal.strIngredient3}  -  ${meal.strMeasure3}</li>
-        <li>${meal.strIngredient4}  -  ${meal.strMeasure4}</li>
-        <li>${meal.strIngredient5}  -  ${meal.strMeasure5}</li>
-        <li>${meal.strIngredient6}  -  ${meal.strMeasure6} </li>
-        <li>${meal.strIngredient7}  -  ${meal.strMeasure7}</li>
-        <li>${meal.strIngredient8}  -  ${meal.strMeasure8}</li>
-        <li>${meal.strIngredient9}  -  ${meal.strMeasure9}</li>
-        <li>${meal.strIngredient10}  -  ${meal.strMeasure10}</li>       
+        <ul><li>${meal.strIngredient1}-${meal.strMeasure1} </li>
+        <li>${meal.strIngredient2}-${meal.strMeasure2}</li>
+        <li>${meal.strIngredient3}-${meal.strMeasure3}</li>
+        <li>${meal.strIngredient4}-${meal.strMeasure4}</li>
+        <li>${meal.strIngredient5}-${meal.strMeasure5}</li>
+        <li>${meal.strIngredient6}-${meal.strMeasure6} </li>
+        <li>${meal.strIngredient7}-${meal.strMeasure7}</li>
+        <li>${meal.strIngredient8}-${meal.strMeasure8}</li>
+        <li>${meal.strIngredient9}-${meal.strMeasure9}</li>
+        <li>${meal.strIngredient10}-${meal.strMeasure10}</li>       
         </ul>
     </div>     
     `;

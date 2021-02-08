@@ -7,15 +7,15 @@
 
 :root {
     --tenne-tawny: #1b2f4e;
-    --tenne-tawny-dark: #012f2a;
+    --tenne-tawny-dark: #024139;
 }
 
 body {
     font-weight: 300;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     font-family: 'Lato', sans-serif;
-    background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+    background: linear-gradient(60deg, #a1c4fd, #c2e9fb);
     opacity: .98;
 }
 
@@ -38,11 +38,11 @@ body {
 }
 
 .navbar-brand:hover {
-    color: rgb(0, 0, 0);
+    color: rgb(0, 49, 37);
 }
 
 .navbar .nav-item .nav-link {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: white;
     transition: background .6s linear;
@@ -197,8 +197,8 @@ body {
 
 .showRecipe {
     display: block;
-    margin: 5rem 0;
-    height: 500px;
+    margin: 2rem 0;
+    height: 450px;
 }
 
 .meal-details-content {

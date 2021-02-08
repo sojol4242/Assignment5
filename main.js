@@ -13,18 +13,20 @@ recipeCloseBtn.addEventListener('click', () => {
 
 // get meal list that matches with the ingredients
 function getMealList() {
-    let searchInputTxt = document.getElementById('search-input').value.trim();
+    let searchInput = document.getElementById('search-input').value;
+    if (searchInput == '') {
+        alert("Please search by a word")
+    } else {
+        fetch(` https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`)
 
-    fetch(` https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInputTxt}`)
+        .then(res => res.json())
+            .then(data => {
+                let html = "";
 
-    .then(response => response.json())
-        .then(data => {
-            let html = "";
-
-            console.log(data.meals)
-            if (data.meals) {
-                data.meals.forEach(meal => {
-                    html += `
+                console.log(data.meals)
+                if (data.meals) {
+                    data.meals.forEach(meal => {
+                        html += `
                    
                     <div class = "meal-item" data-id = "${meal.idMeal}">
                         <div class = "meal-img">
@@ -36,15 +38,24 @@ function getMealList() {
                         </div>
                     </div>
                 `;
-                });
-                mealList.classList.remove('notFound');
-            } else {
-                html = "Sorry, we can't reach your search!";
-                mealList.classList.add('notFound');
-            }
+                    });
+                    mealList.classList.remove('notFound');
+                } else {
+                    html = "Sorry, we can't reach your search!";
+                    mealList.classList.add('notFound');
+                }
 
-            mealList.innerHTML = html;
-        });
+                mealList.innerHTML = html;
+                document.getElementById("error").innerText = "";
+
+            })
+            .catch(err => {
+                // alert("We can't reach to your food.Please try again", err);
+                document.getElementById("error").innerText = "We can't reach to your food.Please try again";
+                mealList.innerHTML = '';
+            })
+    }
+
 }
 
 
@@ -68,38 +79,40 @@ mealDetails.addEventListener("click", () => {
 function getMealRecipe(e) {
     let mealItem = e.target.parentElement.parentElement;
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => mealRecipeModal(data.meals));
 
 }
+
+
 // create a modal
 function mealRecipeModal(meal) {
-
     meal = meal[0];
+    console.log(meal)
     let html = `
     <div class = "recipe-meal-img">
-    <img src = "${meal.strMealThumb}" alt = "">
+    <img src = "${meal.strMealThumb}" alt = "meal-image">
 </div>
         <h2 class = "recipe-title">${meal.strMeal}</h2>
         <p class = "recipe-category">${meal.strCategory}</p>
-        
-      
         <div class = "recipe-instruct">
             <h3>Instructions:</h3>
-          
             <p>${meal.strInstructions}</p>
         </div>
         <div class = "recipe-ingredient">
-        <h3>Ingredient:</h3>
-      
-        <p>${meal.strIngredient1}</p>
-        <p>${meal.strIngredient3}</p>
-        <p>${meal.strIngredient2}</p>
-        <p>${meal.strIngredient5}</p>
-        <p>${meal.strIngredient4}</p>
-    </div>
-       
-       
+        <h3 id="ingredientHead">Ingredient:</h3>     
+        <ul><li>${meal.strIngredient1}  -  ${meal.strMeasure1} </li>
+        <li>${meal.strIngredient2}  -  ${meal.strMeasure2}</li>
+        <li>${meal.strIngredient3}  -  ${meal.strMeasure3}</li>
+        <li>${meal.strIngredient4}  -  ${meal.strMeasure4}</li>
+        <li>${meal.strIngredient5}  -  ${meal.strMeasure5}</li>
+        <li>${meal.strIngredient6}  -  ${meal.strMeasure6} </li>
+        <li>${meal.strIngredient7}  -  ${meal.strMeasure7}</li>
+        <li>${meal.strIngredient8}  -  ${meal.strMeasure8}</li>
+        <li>${meal.strIngredient9}  -  ${meal.strMeasure9}</li>
+        <li>${meal.strIngredient10}  -  ${meal.strMeasure10}</li>       
+        </ul>
+    </div>     
     `;
     mealDetailsContent.innerHTML = html;
     mealDetailsContent.parentElement.classList.add('showRecipe');

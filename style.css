@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,900;1,100&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -6,19 +6,56 @@
 }
 
 :root {
-    --tenne-tawny: #000000;
-    --tenne-tawny-dark: #000000;
+    --tenne-tawny: #1b2f4e;
+    --tenne-tawny-dark: #012f2a;
 }
 
 body {
     font-weight: 300;
     font-size: 1.05rem;
     line-height: 1.6;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+    opacity: .98;
 }
 
 
-/*  */
+/* header */
+
+
+/* nav bar */
+
+.navbar {
+    background: linear-gradient(60deg, #1787c8, #80d0c7);
+    height: 70px;
+}
+
+.navbar .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    transition: color .6s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: rgb(0, 0, 0);
+}
+
+.navbar .nav-item .nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    transition: background .6s linear;
+    margin-left: 20px;
+}
+
+.navbar .nav-item .nav-link:hover {
+    background: white;
+    border-radius: 5px;
+}
+
+
+/* style search button */
 
 .btn {
     font-family: inherit;
@@ -34,21 +71,21 @@ body {
 .title {
     font-size: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 
-/*  */
+/*  main container*/
 
 .container {
-    min-height: 100vh;
+    margin: 2rem auto;
 }
 
 .meal-wrapper {
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
-    background: #fff;
-    text-align: center;
+    text-align: justify;
 }
 
 .meal-search {
@@ -73,7 +110,6 @@ body {
 .search-control {
     padding: 0 1rem;
     font-size: 1.1rem;
-    font-family: inherit;
     outline: 0;
     border: 2px solid var(--tenne-tawny);
     color: var(--tenne-tawny);
@@ -161,10 +197,12 @@ body {
 
 .showRecipe {
     display: block;
+    margin: 5rem 0;
+    height: 500px;
 }
 
 .meal-details-content {
-    margin: 2rem;
+    margin: 5rem;
 }
 
 .meal-details-content p:not(.recipe-category) {
@@ -242,12 +280,12 @@ ul {
 }
 
 ul li {
-    color: rgb(115, 100, 255);
-    font-size: 1rem;
-    font-weight: 600;
+    color: rgb(248, 248, 248);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
 }
 
-h3 .head {
+h3 .ingredientHead {
     font-size: 2rem;
     color: rgb(129, 255, 213);
     letter-spacing: 1px;
@@ -262,6 +300,10 @@ h3 .head {
     font-size: 1.8rem;
     font-weight: 600;
     width: 100%;
+}
+
+#error {
+    text-align: center;
 }
 
 

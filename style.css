@@ -27,7 +27,7 @@ body {
 
 .navbar {
     background: linear-gradient(60deg, #1787c8, #80d0c7);
-    height: 70px;
+    height: 90px;
 }
 
 .navbar .navbar-brand {
@@ -78,7 +78,7 @@ body {
 /*  main container*/
 
 .container {
-    margin: 2rem auto;
+    margin: 5rem auto;
 }
 
 .meal-wrapper {

@@ -10,4 +10,4 @@
 <h2>projects screen shot : </h2>
 
 <img src="screenshot/Screenshot (12).png">
-<img src="screenshot/Screenshot (12).png">
+<img src="screenshot/Screenshot (13).png">

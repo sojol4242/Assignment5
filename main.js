@@ -53,19 +53,7 @@ function getMealList() {
             })
     }
 }
-
-
-// get recipe of the meal
-// function getMealRecipe(e) {
-//     e.preventDefault();
-//     if (e.target.classList.contains('recipe-btn')) {
-//         let mealItem = e.target.parentElement.parentElement;
-//         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-//             .then(response => response.json())
-//             .then(data => mealRecipeModal(data.meals));
-//     }
-// }
-
+ 
 // meal details :
 const mealDetails = document.getElementById("meal-card");
 mealDetails.addEventListener("click", () => {
@@ -86,7 +74,7 @@ function getMealRecipe(e) {
 // create a modal
 function mealRecipeModal(meal) {
     meal = meal[0];
-    console.log(meal)
+ 
     let html = `
     <div class = "recipe-meal-img">
     <img src = "${meal.strMealThumb}" alt = "meal-image">
